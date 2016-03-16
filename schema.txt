@@ -1,0 +1,40 @@
+Affiliates:
+id int ai pk
+site_name varchar 100 not null unique
+site_key varchar 100 not null
+modified_by varchar(100) not null (Generally ID address)
+created timestamp default current_timestamp
+last_modified timestamp default current_timestamp
+
+Campaign_locations:
+id int ai pk
+location_name varchar (100) not null
+iso_location_code varchar(3) not null
+country_name varchar(100) not null
+iso_country_code varchar(3) not null
+{site_key_1} int(4) not null (FK)-ad_scripts_ordering(id)
+{site_key_2} int(4) not null (FK)-ad_scripts_ordering(id)
+....
+constraint unique(iso_location_code, iso_country_code)
+modified_by varchar(100) not null (Generally ID address)
+created timestamp default current_timestamp
+last_modified timestamp default current_timestamp
+
+ad_scripts_ordering:
+id int pk ai
+iso_location_code varchar(3) not null
+iso_country_code varchar(3) not null
+script_order varchar(255) not null
+constraint unique(iso_location_code, iso_country_code)
+modified_by varchar(100) not null (Generally ID address)
+created timestamp default current_timestamp
+last_modified timestamp default current_timestamp
+
+Settings:
+id int ai pk
+key varchar(255) not null unique
+values varchar(255) not null
+description text null
+modified_by varchar(100) not null (Generally ID address)
+created timestamp default current_timestamp
+last_modified timestamp default current_timestamp
